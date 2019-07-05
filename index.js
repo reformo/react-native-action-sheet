@@ -16,12 +16,14 @@ const Button = props => {
         backgroundColor: "#fff",
         flex: 1,
         margin: 0,
+        borderWidth: 0,
         width: "100%",
         alignItems: "center",
         justifyContent: "center",
         height: props.buttonHeight,
-        borderTopWidth: props.borderTop === true ? 0.5 : 0,
-        borderTopColor: props.borderTop === true ? "rgb(220,220,220)" : '#fff',
+        borderTopWidth: props.borderTop === true ? 0.6 : 0,
+        borderBottomWidth: 0,
+        borderTopColor: props.borderTop === true ? "rgba(220,220,220, 1)" : '#fff',
         borderTopLeftRadius: props.borderTopRadius ? props.borderTopRadius : 0,
         borderTopRightRadius: props.borderTopRadius ? props.borderTopRadius : 0,
         borderBottomLeftRadius: props.borderBottomRadius ? props.borderBottomRadius : 0,
@@ -34,7 +36,7 @@ const Button = props => {
 
 const ActionSheet = props => {
   const optionsPadding = 25;
-  const buttonDesiredHeight = (props.buttonHeight ? props.buttonHeight : 55);
+  const buttonDesiredHeight = (props.buttonHeight ? props.buttonHeight : 50);
   const buttonHeight = Platform.OS === 'ios' ? buttonDesiredHeight : buttonDesiredHeight - 10;
   const nofOptions = props.options.length;
   const optionsHeight = (nofOptions + 2) * buttonHeight;
@@ -77,8 +79,8 @@ const ActionSheet = props => {
     options.push(
       <Button
         key={i}
-        borderTopRadius={i === 0 ? buttonHeight/4 : 0}
-        borderBottomRadius={i === nofOptions - 1 ? buttonHeight/4 : 0}
+        borderTopRadius={i === 0 ? buttonHeight / 4 : 0}
+        borderBottomRadius={i === nofOptions - 1 ? buttonHeight / 4 : 0}
         buttonHeight={buttonHeight}
         text={option.text}
         value={option}
@@ -129,8 +131,8 @@ const ActionSheet = props => {
               {options}
               {Platform.OS === 'ios' && <Button
                 independent
-                borderTopRadius={buttonHeight/4}
-                borderBottomRadius={buttonHeight/4}
+                borderTopRadius={buttonHeight / 4}
+                borderBottomRadius={buttonHeight / 4}
                 buttonHeight={buttonHeight}
                 text={props.cancelText ? props.cancelText : "Cancel"}
                 onPress={() => { handleClose(); }}
